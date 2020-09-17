@@ -13,16 +13,20 @@ class ArtistsController < ApplicationController
     end
     
     def create
-        artist = Artist.create(name: params[:name],
-                                bio: params[:bio])
-        byebug
+        artist = Artist.create(name: params[:artist][:name],
+                                bio: params[:artist][:bio]
+        )
         redirect_to artist_path(artist.id)
     end
 
-    def edit 
+    def edit
+        @artist = Artist.find(params[:id])
     end
 
-    def update 
+    def update
+        artist = Artist.find(params[:id])
+        artist.update(name: params[:artist][:name], bio: params[:artist][:bio])
+        redirect_to artist_path(artist)
     end
 
 end
