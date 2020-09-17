@@ -8,5 +8,11 @@
 require 'faker'
 
 Artist.destroy_all
+Genre.destroy_all
 
 10.times{ Artist.create(name: Faker::Name.name, bio: Faker::Quote.most_interesting_man_in_the_world)}
+
+
+10.times{ Genre.create(name: Faker::Hipster.word)}
+
+Song.create(name: "Bye, Bye, Bye", artist_id: 40, genre_id: 44)
