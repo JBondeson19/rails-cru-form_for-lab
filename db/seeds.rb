@@ -15,4 +15,4 @@ Genre.destroy_all
 
 10.times{ Genre.create(name: Faker::Hipster.word)}
 
-Song.create(name: "Bye, Bye, Bye", artist_id: 40, genre_id: 44)
+Song.create(name: "Bye, Bye, Bye", artist_id: 30, genre_id: 4)
