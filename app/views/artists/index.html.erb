@@ -4,4 +4,7 @@
     <% @artists.each do |artist| %>
         <li><%= link_to artist.name, artist_path(artist) %></li>
     <% end %>
-</ul>
+</ul><br>
+
+
+<footer><%= link_to "Create a new artist", new_artist_path %></footer>

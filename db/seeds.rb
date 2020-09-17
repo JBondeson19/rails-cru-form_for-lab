@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'faker'
+
+Artist.destroy_all
+
+10.times{ Artist.create(name: Faker::Name.name, bio: Faker::Quote.most_interesting_man_in_the_world)}
