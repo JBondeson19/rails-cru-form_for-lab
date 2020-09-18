@@ -19,9 +19,7 @@ class SongsController < ApplicationController
         @genre = Genre.find_or_create_by(name: params[:song][:genre])
 
 
-        song = Song.find_or_create_by(name: params[:song][:name],
-                                       artist_id: @artist.id,
-                                       genre_id: @genre.id
+        song = Song.find_or_create_by(params_limiter(:name, :artist_id, :genre_id)
         )
         redirect_to song_path(song)
     end
@@ -32,8 +30,14 @@ class SongsController < ApplicationController
 
     def update
         song = Song.find(params[:id])
-        song.update(name: params[:song][:name])
+        song.update(params_limiter(:name, :artist_id, :genre_id))
         redirect_to song_path(song)
+    end
+
+    private
+
+    def params_limiter(*args)
+        params.require(:song).permit(*args)
     end
 
 end
